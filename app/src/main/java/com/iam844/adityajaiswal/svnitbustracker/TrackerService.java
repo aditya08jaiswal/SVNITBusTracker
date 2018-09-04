@@ -66,11 +66,47 @@ public class TrackerService extends Service {
     };
 
     private void loginToFirebase() {
-        // Functionality coming next step
+        // Authenticate with Firebase, and request location updates
+        String email = getString(R.string.firebase_email);
+        String password = getString(R.string.firebase_password);
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>(){
+            @Override
+            public void onComplete(Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "firebase auth success");
+                    requestLocationUpdates();
+                } else {
+                    Log.d(TAG, "firebase auth failed");
+                }
+            }
+        });
     }
 
     private void requestLocationUpdates() {
-        // Functionality coming next step
+        LocationRequest request = new LocationRequest();
+        request.setInterval(10000);
+        request.setFastestInterval(5000);
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
+        final String path = getString(R.string.firebase_path) + "/" + getString(R.string.transport_id);
+        int permission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permission == PackageManager.PERMISSION_GRANTED) {
+            // Request location updates and when an update is
+            // received, store the location in Firebase
+            client.requestLocationUpdates(request, new LocationCallback() {
+                @Override
+                public void onLocationResult(LocationResult locationResult) {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference(path);
+                    Location location = locationResult.getLastLocation();
+                    if (location != null) {
+                        Log.d(TAG, "location update " + location);
+                        ref.setValue(location);
+                    }
+                }
+            }, null);
+        }
     }
 
 }
