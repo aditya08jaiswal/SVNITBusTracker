@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "27538495123",
+    "firebase_url": "https://svnit-bus.firebaseio.com",
+    "project_id": "svnit-bus",
+    "storage_bucket": "svnit-bus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27538495123:android:5666832879d5f975",
+        "android_client_info": {
+          "package_name": "com.iam844.adityajaiswal.svnitbustracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "27538495123-svdj7trruo66ghrripsmreisa6c4vpcr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iam844.adityajaiswal.svnitbustracker",
+            "certificate_hash": "7a58225539945d18a87ba31f105f8553e4812093"
+          }
+        },
+        {
+          "client_id": "27538495123-dqkg7c66hgq2ju5rnk459ir3o5jf578o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIB1gWpi5Jb0Y34PPsg4vnITHoQtN70rk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "27538495123-dqkg7c66hgq2ju5rnk459ir3o5jf578o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
